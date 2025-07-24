@@ -23,6 +23,14 @@ export interface RegisterUserReq extends Request {
   };
 }
 
+export interface IUserUpdate {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  role: IUser["role"];
+}
+
 export interface UserResponse {
   firstName: string;
   lastName?: string;
@@ -58,6 +66,16 @@ export interface ICategory extends Document {
   createdAt?: Date;
   updatedAt?: Date;
 }
+export interface CategoryReq {
+  name: string;
+  description?: string;
+}
+
+export interface ICart {
+  product: Types.ObjectId;
+  quantity: number;
+}
+[];
 
 export interface IOrder extends Document {
   user: Types.ObjectId;

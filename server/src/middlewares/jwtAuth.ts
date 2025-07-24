@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
 import jwt from "jsonwebtoken";
 
-export const userAuth: RequestHandler = async (req, res, next) => {
+export const jwtAuth: RequestHandler = async (req, res, next) => {
   const token = req.cookies?.token;
   if (!token) {
     res.status(401).json({
