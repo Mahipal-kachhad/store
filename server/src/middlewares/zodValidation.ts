@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { z, ZodType } from "zod/v4";
+import { z, ZodType,} from "zod/v4";
 
 export const validateRegister =
   (schema: ZodType): RequestHandler =>

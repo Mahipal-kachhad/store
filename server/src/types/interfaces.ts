@@ -92,3 +92,10 @@ export interface IOrder extends Document {
   createdAt?: Date;
   updatedAt?: Date;
 }
+
+export interface OtpDocument extends Document {
+  email: string;
+  otp: string;
+  expiresAt: Date;
+  verified: boolean;
+}
