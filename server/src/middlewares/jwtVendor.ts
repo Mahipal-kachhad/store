@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
 
-export const jwtVender: RequestHandler = async (req, res, next) => {
+export const jwtVendor: RequestHandler = async (req, res, next) => {
   const token = req.cookies?.token;
   if (!token) {
     res.status(401).json({
@@ -11,7 +11,7 @@ export const jwtVender: RequestHandler = async (req, res, next) => {
   } else {
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET!) as JwtPayload;
-      if (decoded.role === "admin" || decoded.role === "vender") {
+      if (decoded.role === "admin" || decoded.role === "vendor") {
         (req as any).user = decoded;
         next();
       } else {

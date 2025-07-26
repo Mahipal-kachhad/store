@@ -8,7 +8,7 @@ export const RegisterSchema = z.object({
     .string()
     .min(8, "at least 8 charactors")
     .max(16, "less than 16 charactors"),
-  role: z.enum(["admin", "vender", "user"]).default("user"),
+  role: z.enum(["admin", "vendor", "user"]).default("user"),
 });
 
 export const LoginSchema = z.object({

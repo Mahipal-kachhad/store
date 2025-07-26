@@ -6,7 +6,7 @@ export interface IUser extends Document {
   lastName?: string;
   email: string;
   password: string;
-  role: "user" | "admin" | "vender";
+  role: "user" | "admin" | "vendor";
   cart: { product: Types.ObjectId; quantity: number }[];
   orders: { product: Types.ObjectId; quantity: number }[];
   createdAt?: Date;

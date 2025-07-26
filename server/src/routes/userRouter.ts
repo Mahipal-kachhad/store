@@ -19,7 +19,7 @@ router.post("/login", validateLogin(LoginSchema), authenticateUser);
 router.get("/me", jwtAuth, getMe);
 router.post("/logout", logout);
 router.post("/change-password", jwtAuth, changePassword);
-router.post("/forget-password", forgetPassword);
+router.post("/reset-password", forgetPassword);
 router.post("/send-otp", sendOtp);
 router.post("/verify-otp", verifyOtp);
 

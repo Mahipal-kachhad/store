@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { jwtVender } from "../middlewares/jwtVender";
+import { jwtVendor } from "../middlewares/jwtVendor";
 import {
   deleteProduct,
   getAllProducts,
@@ -11,10 +11,10 @@ import { jwtAuth } from "../middlewares/jwtAuth";
 
 const router = Router();
 
-router.post("/", jwtVender, insertProduct);
+router.post("/", jwtVendor, insertProduct);
 router.get("/", jwtAuth, getAllProducts);
 router.get("/:id", jwtAuth, getProduct);
-router.put("/:id", jwtVender, updateProduct);
-router.delete("/:id", jwtVender, deleteProduct);
+router.put("/:id", jwtVendor, updateProduct);
+router.delete("/:id", jwtVendor, deleteProduct);
 
 export default router;

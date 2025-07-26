@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema<IUser>(
     lastName: { type: String },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    role: { type: String, enum: ["admin", "vender", "user"], default: "user" },
+    role: { type: String, enum: ["admin", "vendor", "user"], default: "user" },
     cart: [
       {
         product: { type: mongoose.Schema.Types.ObjectId, ref: "product" },
