@@ -8,6 +8,7 @@ import {
 import bcrypt from "bcrypt";
 import userModel from "../models/userModel";
 import jwt from "jsonwebtoken";
+import otpModel from "../models/otpModel";
 
 export const registerUser = async (
   req: RegisterUserReq,
@@ -151,14 +152,21 @@ export const changePassword = async (
 };
 
 export const forgetPassword = async (
-  req: Request<{}, {}, { newPassword: string }>,
+  req: Request<{}, {}, {email:string, newPassword: string }>,
   res: Response<ApiResponse<{}>>
 ) => {
   try {
-    const { id } = (req as any).user;
-    const { newPassword } = req.body;
+    const { newPassword, email } = req.body;
+    const record = await otpModel.findOne({ email }, "verified");
+    if (!record || !record.verified) {
+      res.status(401).json({
+        success: false,
+        error: "access denied",
+      });
+      return;
+    }
     const hashedPassword = await bcrypt.hash(newPassword, 10);
-    const user = await userModel.findById(id);
+    const user = await userModel.findOne({email});
     if (!user) {
       res.status(404).json({
         success: false,

@@ -70,7 +70,8 @@ export const updateCategory = async (
   try {
     const category = await categoryModel.findByIdAndUpdate(
       req.params.id,
-      req.body
+      req.body,
+      { new: true }
     );
     if (!category) {
       res.status(404).json({

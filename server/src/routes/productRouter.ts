@@ -7,12 +7,13 @@ import {
   insertProduct,
   updateProduct,
 } from "../controllers/productController";
+import { jwtAuth } from "../middlewares/jwtAuth";
 
 const router = Router();
 
 router.post("/", jwtVender, insertProduct);
-router.get("/", jwtVender, getAllProducts);
-router.get("/:id", jwtVender, getProduct);
+router.get("/", jwtAuth, getAllProducts);
+router.get("/:id", jwtAuth, getProduct);
 router.put("/:id", jwtVender, updateProduct);
 router.delete("/:id", jwtVender, deleteProduct);
 
