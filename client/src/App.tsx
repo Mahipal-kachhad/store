@@ -6,6 +6,7 @@ import LoginForm from "./components/LoginForm";
 import { Toaster } from "react-hot-toast";
 import RegisterForm from "./components/RegisterForm";
 import ForgotPassword from "./components/ForgetPassword";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/forget-password" element={<ForgotPassword />} />
+        <Route path="/dashboard/*" element={<Dashboard />} />
       </Routes>
       <Footer />
       <Toaster position="top-center" reverseOrder={false} />
