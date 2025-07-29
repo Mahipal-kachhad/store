@@ -1,6 +1,6 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import AddCategory from "./Vendor/AddCategory";
+import AddCategory from "./Admin/AddCategory";
 import AddProduct from "./Vendor/AddProduct";
 import UpdateProduct from "./Vendor/UpdateProduct";
 import UserList from "./Admin/UserList";
@@ -55,7 +55,6 @@ const Dashboard = () => {
         <Routes>
           {(user.role === "vendor" || user.role === "admin") && (
             <>
-              <Route path="/vendor/add-category" element={<AddCategory />} />
               <Route path="/vendor/add-product" element={<AddProduct />} />
               <Route
                 path="/vendor/update-product"
@@ -65,6 +64,7 @@ const Dashboard = () => {
           )}
           {user.role === "admin" && (
             <>
+              <Route path="/vendor/add-category" element={<AddCategory />} />
               <Route path="/admin/user-list" element={<UserList />} />
               <Route path="/admin/update-user" element={<UpdateUser />} />
               <Route path="/admin/delete-user" element={<DeleteUser />} />
