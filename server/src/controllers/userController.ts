@@ -69,7 +69,7 @@ export const authenticateUser = async (
 
       res.cookie("token", token, {
         httpOnly: true,
-        sameSite: "lax",
+        sameSite: "none",
         secure: false,
         maxAge: 1000 * 60 * 60,
       });
@@ -189,7 +189,7 @@ export const forgetPassword = async (
 
 export const logout = (req: Request, res: Response) => {
   res.clearCookie("token", {
-    sameSite: "lax",
+    sameSite: "none",
     secure: false,
     httpOnly: true,
   });
