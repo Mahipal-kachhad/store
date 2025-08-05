@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { jwtVendor } from "../middlewares/jwtVendor";
 import {
   deleteCategory,
   getAllCategories,
@@ -8,13 +7,14 @@ import {
   updateCategory,
 } from "../controllers/categotyController";
 import { jwtAuth } from "../middlewares/jwtAuth";
+import { jwtAdmin } from "../middlewares/jwtAdmin";
 
 const router = Router();
 
-router.post("/", jwtVendor, insertCategory);
+router.post("/", jwtAdmin, insertCategory);
 router.get("/", jwtAuth, getAllCategories);
 router.get("/:id", jwtAuth, getCategory);
-router.put("/:id", jwtVendor, updateCategory);
-router.delete("/:id", jwtVendor, deleteCategory);
+router.put("/:id", jwtAdmin, updateCategory);
+router.delete("/:id", jwtAdmin, deleteCategory);
 
 export default router;

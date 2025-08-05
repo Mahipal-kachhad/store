@@ -11,9 +11,9 @@ import {
 const router = Router();
 
 router.get("/", jwtAuth, getCart);
-router.post("/add", jwtAuth, insertCartItem);
-router.put("/update/:id", jwtAuth, updateCart);
-router.delete("/remove/:id", jwtAuth, removeCartItem);
+router.post("/", jwtAuth, insertCartItem);
+router.put("/:id", jwtAuth, updateCart);
+router.delete("/:id", jwtAuth, removeCartItem);
 router.delete("/clear", jwtAuth, clearCart);
 
 export default router;
